@@ -3,9 +3,13 @@ const wording = {
     {
       title: "面試課程",
       href: "/interview",
-      content: [{ title: "寺尾老師學經歷", href: "#resume" }],
+      isActive: true,
+      content: [
+        { title: "寺尾老師學經歷", href: "#resume" },
+        { title: "學員錄取心得", href: "#resume" },
+      ],
     },
-    { title: "國高中生APCS初學課程", href: "/apcs" },
+    { title: "國高中生APCS初學課程", href: "/apcs", isActive: false },
   ],
   resume: {
     experience: [
