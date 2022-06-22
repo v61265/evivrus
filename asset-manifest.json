@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/evivrus/static/css/main.352505da.css",
+    "main.js": "/evivrus/static/js/main.4cd7166b.js",
+    "static/media/interview-bg-desktop.svg": "/evivrus/static/media/interview-bg-desktop.977af54fa45ed1da8af7378e094eeb63.svg",
+    "static/media/logo.svg": "/evivrus/static/media/logo.90932ef566952888c75be0bca9430d3f.svg",
+    "static/media/open-burger.svg": "/evivrus/static/media/open-burger.f182a2cb96dc8a3024078143ffaf1f04.svg",
+    "static/media/arrow.svg": "/evivrus/static/media/arrow.8009b1ee5caffee506ef8d15a68e1fc9.svg",
+    "static/media/close-burger.svg": "/evivrus/static/media/close-burger.371981c119478210d97624b768936759.svg",
+    "index.html": "/evivrus/index.html",
+    "main.352505da.css.map": "/evivrus/static/css/main.352505da.css.map",
+    "main.4cd7166b.js.map": "/evivrus/static/js/main.4cd7166b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.352505da.css",
+    "static/js/main.4cd7166b.js"
+  ]
+}
