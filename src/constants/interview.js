@@ -1,4 +1,12 @@
-export const wording = {
+const wording = {
+  headerList: [
+    {
+      title: "面試課程",
+      href: "/interview",
+      content: [{ title: "寺尾老師學經歷", href: "#resume" }],
+    },
+    { title: "國高中生APCS初學課程", href: "/apcs" },
+  ],
   resume: {
     experience: [
       [{ style: "unstyled", content: "Google 工程師，東京，2019 - 2021" }],
@@ -107,3 +115,5 @@ export const wording = {
     },
   ],
 };
+
+export { wording };
