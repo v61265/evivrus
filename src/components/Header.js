@@ -14,6 +14,9 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
   ${({ theme }) => theme.media.md} {
     padding: 20px 50px;
   }
@@ -114,11 +117,16 @@ const BurgerRight = styled.div`
   align-items: center;
 `;
 
+const Space = styled.div`
+  height: 110px;
+`;
+
 export default function Header({ headerList }) {
   let isDesktop = useIsDesktop();
   const [isOpenBurger, setIsOpenBurger] = useState(false);
   return (
     <>
+      <Space />
       <Wrapper isOpen={isOpenBurger}>
         <Logo />
         <BurgerRight>

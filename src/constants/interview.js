@@ -11,6 +11,10 @@ const wording = {
     },
     { title: "國高中生APCS初學課程", href: "/apcs", isActive: false },
   ],
+  landing: {
+    title: ["寺尾", "程式家教"],
+    subtitle: ["前 GOOGLE 面試官", "一對一線上家教"],
+  },
   resume: {
     experience: [
       [{ style: "unstyled", content: "Google 工程師，東京，2019 - 2021" }],

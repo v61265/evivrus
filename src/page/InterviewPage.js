@@ -3,6 +3,7 @@ import bgDesktop from "../asstes/interview-bg-desktop.svg";
 import { wording } from "../constants/interview.js";
 
 import Header from "../components/Header";
+import Landing from "../components/Landing";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -13,8 +14,11 @@ const Wrapper = styled.div`
 
 export default function InterviewPage() {
   return (
-    <Wrapper>
+    <>
       <Header headerList={wording.headerList} />
-    </Wrapper>
+      <Wrapper>
+        <Landing landing={wording.landing} />
+      </Wrapper>
+    </>
   );
 }
