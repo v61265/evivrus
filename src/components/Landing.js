@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 const LandingWrapper = styled.div`
-  padding-top: 7.8vw;
-  padding-right: 11vw;
+  padding: 9rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
   text-align: end;
   display: flex;
   flex-direction: column;

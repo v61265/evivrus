@@ -4,6 +4,8 @@ import { wording } from "../constants/interview.js";
 
 import Header from "../components/Header";
 import Landing from "../components/Landing";
+import Resume from "../components/Resume";
+import Feature from "../components/Feature";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -18,6 +20,8 @@ export default function InterviewPage() {
       <Header headerList={wording.headerList} />
       <Wrapper>
         <Landing landing={wording.landing} />
+        <Resume resume={wording.resume} />
+        <Feature features={wording.features} />
       </Wrapper>
     </>
   );

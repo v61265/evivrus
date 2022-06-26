@@ -15,41 +15,51 @@ const wording = {
     title: ["寺尾", "程式家教"],
     subtitle: ["前 GOOGLE 面試官", "一對一線上家教"],
   },
-  resume: {
-    experience: [
-      [{ style: "unstyled", content: "Google 工程師，東京，2019 - 2021" }],
-      [
-        {
-          style: "unstyled",
-          content: "Google 工程師，加州 Mountain View，2013 - 2015",
-        },
+  resume: [
+    {
+      name: "經歷",
+      title: [[{ style: "unstyled", content: "Google 工程師" }]],
+      subtitle: [
+        [{ style: "unstyled", content: "東京，2019 - 2021" }],
+        [{ style: "unstyled", content: "台北，2015 - 2019" }],
+        [
+          {
+            style: "unstyled",
+            content: "加州 Mountain View，2013 - 2015",
+          },
+        ],
+        [{ style: "unstyled", content: "在 Google 內執行過 50 場以上的面試" }],
       ],
-      [{ style: "unstyled", content: "Google 工程師，台北，2015 - 2019" }],
-      [{ style: "unstyled", content: "在 Google 內執行過 50 場以上的面試" }],
-    ],
-    education: [
-      [
-        {
-          style: "unstyled",
-          content: "Carnegie Mellon University 軟體工程碩士",
-        },
+    },
+    {
+      name: "學歷",
+      title: [
+        [
+          {
+            style: "unstyled",
+            content: "Carnegie Mellon University 軟體工程碩士",
+          },
+        ],
+        [
+          {
+            style: "unstyled",
+            content: "台大資工系學士（b95）",
+          },
+        ],
       ],
-      [
-        {
-          style: "unstyled",
-          content: "台大資工系學士（b95）",
-        },
+    },
+    {
+      name: "成績",
+      title: [
+        [
+          {
+            style: "unstyled",
+            content: "台大資工系畢業名次 Top 5%，書卷獎三次",
+          },
+        ],
       ],
-    ],
-    grade: [
-      [
-        {
-          style: "unstyled",
-          content: "台大資工系畢業名次 Top 5%，書卷獎三次",
-        },
-      ],
-    ],
-  },
+    },
+  ],
   students: [
     {
       name: "",
