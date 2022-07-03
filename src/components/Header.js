@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import useIsDesktop from "../hooks/useIsDesktop.js";
 import SignUpButton from "../components/SignUpButton.js";
-
 import logoDesktop from "../asstes/logo.svg";
 import openBurger from "../asstes/open-burger.svg";
 import closeBurger from "../asstes/close-burger.svg";
 import arrowSvg from "../asstes/arrow.svg";
 import { useState } from "react";
+import { useScrollDirection } from "../hooks/useScrollDirection";
 
 const Wrapper = styled.div`
   background: #dfdfdf;
@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   width: 100%;
   top: 0;
   z-index: 100;
+  transition: transform 1s;
   ${({ theme }) => theme.media.md} {
     padding: 20px 50px;
   }
@@ -26,6 +27,7 @@ const Wrapper = styled.div`
     `
   background: rgba(29, 29, 29, 0.42);
   `}
+  ${(props) => props.isHide && `transform: translate(0, -100%);`}
 `;
 
 const Logo = styled.div`
@@ -37,7 +39,6 @@ const Logo = styled.div`
 
 const Link = styled.a`
   margin-right: 60px;
-  font-family: "IBM Plex Serif";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -58,7 +59,6 @@ const BurgerButton = styled.div`
   width: 36px;
   height: 36px;
   background: url(${(props) => {
-    console.log(props);
     return props.isOpen ? closeBurger : openBurger;
   }});
   background-size: cover;
@@ -101,7 +101,6 @@ const LinkInBergur = styled(Link)`
 `;
 
 const SubTitle = styled.a`
-  font-family: "IBM Plex Serif";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -124,17 +123,23 @@ const Space = styled.div`
 
 export default function Header({ headerList }) {
   let isDesktop = useIsDesktop();
+  const scrollDirection = useScrollDirection();
   const [isOpenBurger, setIsOpenBurger] = useState(false);
   return (
     <>
       <Space />
-      <Wrapper isOpen={isOpenBurger}>
+      <Wrapper
+        isOpen={isOpenBurger}
+        isHide={scrollDirection === "down" && !isOpenBurger}
+      >
         <Logo />
         <BurgerRight>
           {isDesktop ? (
             <>
-              {headerList.map((item) => (
-                <Link href={item.href}>{item.title}</Link>
+              {headerList.map((item, i) => (
+                <Link href={item.href} key={`header-list-${i}`}>
+                  {item.title}
+                </Link>
               ))}
               <SignUpButton />
             </>

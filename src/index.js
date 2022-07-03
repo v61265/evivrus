@@ -50,6 +50,7 @@ const theme = {
   },
   media: {
     md: "@media (min-width: 768px)",
+    sm: "@media (min-width: 576px)",
   },
   shadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
 };

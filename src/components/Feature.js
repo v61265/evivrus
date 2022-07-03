@@ -1,34 +1,40 @@
 import styled from "styled-components";
 
-import ContentHandler from "./ContnetHandler";
+import FeatureItemComponent from "./FeatureItem";
+import Title from "./Title";
 
 const FeatureWrapper = styled.div`
   padding: 3rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
 `;
 
-const Title = styled.h2`
-  font-weight: 700;
-  font-size: 4rem;
-  color: #000000;
-  padding-bottom: 0.5rem;
-  border-bottom: 10px solid #ffffff;
+const Slash = styled.div`
+  width: 7rem;
+  border-top: 0.75rem solid #0b3e92;
+  transform: rotate(122.32deg);
+  margin: 3rem auto;
 `;
 
-const FeatureItem = styled.div``;
-
-const FeatureItemTitle = styled.div``;
-
-export default function Resume({ features }) {
-  console.log(features);
-  const feature = features[0];
+export default function Feature({ features }) {
   return (
     <FeatureWrapper>
-      <Title>課程特色</Title>
-      <FeatureItem>
-        <FeatureItemTitle>{feature.title}</FeatureItemTitle>
-      </FeatureItem>
+      <Title title='課程特色' isLight={true} />
+      {features.map((feature, i) => {
+        if (i !== 0) {
+          return (
+            <div key={`feature-item-${i}`}>
+              <Slash />
+              <FeatureItemComponent feature={feature} />
+            </div>
+          );
+        }
+        return (
+          <FeatureItemComponent key={`feature-item-${i}`} feature={feature} />
+        );
+      })}
     </FeatureWrapper>
   );
 }

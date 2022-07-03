@@ -1,21 +1,29 @@
 import styled from "styled-components";
 
 const LandingWrapper = styled.div`
-  padding: 9rem 3rem;
-  max-width: 1100px;
+  padding: 7rem 2rem;
   margin: 0 auto;
   text-align: end;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  ${({ theme }) => theme.media.sm} {
+    padding: 9rem 5rem;
+  }
 `;
 
 const Title = styled.div`
   font-weight: 700;
-  font-size: 6rem;
+  font-size: 3rem;
   line-height: 1.5;
   text-align: right;
   color: #000000;
+  ${({ theme }) => theme.media.sm} {
+    font-size: 4.5rem;
+  }
+  ${({ theme }) => theme.media.md} {
+    font-size: 6rem;
+  }
 `;
 
 const Slash = styled.div`
@@ -24,14 +32,24 @@ const Slash = styled.div`
   transform: rotate(122.32deg);
   width: 5rem;
   margin: 3rem 0;
+  margin-top: 15rem;
+  ${({ theme }) => theme.media.sm} {
+    margin-top: 30rem;
+  }
+  ${({ theme }) => theme.media.md} {
+    margin: 3rem 0;
+  }
 `;
 
 const SubTitle = styled.div`
   font-weight: 400;
-  font-size: 3rem;
+  font-size: 2rem;
   line-height: 1.5;
   text-align: right;
   color: #0b3e92;
+  ${({ theme }) => theme.media.md} {
+    font-size: 3rem;
+  }
 `;
 
 export default function Landing({ landing }) {
