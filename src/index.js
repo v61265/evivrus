@@ -6,53 +6,12 @@ import App from "./App";
 import { ThemeProvider } from "styled-components";
 
 const theme = {
-  color: {
-    primary: "#F9ADAD",
-    primaryLight: "#FAE0E0",
-    primaryDark: "#BB8080",
-    secondary: "#212121",
-    secondaryLight: "#48484848",
-    secondaryDark: "#212121",
-    white: "#FEFEFE",
-    black: "#000000",
-    grey: "#C4C4C4",
-    greyLight: "#E5E5E5",
-    greyDark: "#656565",
-    alert: "#FF0000",
-    background: "#F1F0F0",
-    backgroundIfLight: "#F56F6F",
-    backgroundIfDark: "#F05454",
-    mask: "#21212166",
-  },
-  font: {
-    xxs: 14,
-    xs: 16,
-    sm: 18,
-    md: 20,
-    lg: 22,
-    xl: 24,
-    xxl: 30,
-    xxxl: 40,
-  },
-  space: {
-    xxs: 4,
-    xs: 8,
-    sm: 10,
-    md: 30,
-    lg: 40,
-    xl: 60,
-    xxl: 80,
-    xxxxl: 120,
-  },
-  icon: {
-    sm: 24,
-    md: 36,
-  },
   media: {
+    xl: "@media (min-width: 1440px)",
+    l: "@media (min-width: 1200px)",
     md: "@media (min-width: 768px)",
     sm: "@media (min-width: 576px)",
   },
-  shadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
 };
 
 ReactDOM.render(

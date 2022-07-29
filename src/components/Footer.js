@@ -2,6 +2,7 @@ import styled from "styled-components";
 import logo from "../asstes/logo-white.png";
 import fb from "../asstes/fb.svg";
 import mail from "../asstes/mail.svg";
+import { wording } from "../constants/default.js";
 
 const Wrapper = styled.div`
   background: #000;
@@ -33,14 +34,15 @@ const Right = styled.div`
 `;
 
 export default function Footer() {
+  const { footer } = wording;
   return (
     <Wrapper>
       <img src={logo} alt='logo' />
       <Right>
-        <a>
+        <a target='_blank' href={footer.fb} rel='noreferrer'>
           <img src={fb} alt='fb' />
         </a>
-        <a>
+        <a target='_blank' href={`mailto:${footer.mail}`} rel='noreferrer'>
           <img src={mail} alt='mail' />
         </a>
       </Right>

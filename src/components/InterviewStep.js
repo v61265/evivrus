@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Title from "./Title";
-import StepItem from "./StepItem";
+import StepItem from "./InterviewStepItem";
 
 const Wrapper = styled.div`
   padding: 3rem;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 
 export default function Step({ steps }) {
   return (
-    <Wrapper>
+    <Wrapper id='step'>
       <Title title='進行方式' isLight={false} />
       {steps.map((item, i) => (
         <StepItem stepObject={item} key={`steps-item-${i}`} />

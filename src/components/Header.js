@@ -4,9 +4,13 @@ import SignUpButton from "../components/SignUpButton.js";
 import logoDesktop from "../asstes/logo.svg";
 import openBurger from "../asstes/open-burger.svg";
 import closeBurger from "../asstes/close-burger.svg";
-import arrowSvg from "../asstes/arrow.svg";
-import { useState } from "react";
+import arrowPng from "../asstes/arrow.png";
+import { useState, useEffect } from "react";
 import { useScrollDirection } from "../hooks/useScrollDirection";
+import { useLocation } from "react-router-dom";
+import { wording as interviewWording } from "../constants/interview.js";
+import { wording as defaultWording } from "../constants/default.js";
+import { wording as apcsWording } from "../constants/apcs.js";
 
 const Wrapper = styled.div`
   background: #dfdfdf;
@@ -25,7 +29,7 @@ const Wrapper = styled.div`
   ${(props) =>
     props.isOpen &&
     `
-  background: rgba(29, 29, 29, 0.42);
+  background: rgba(29, 29, 29, 0.8);
   `}
   ${(props) => props.isHide && `transform: translate(0, -100%);`}
 `;
@@ -37,21 +41,33 @@ const Logo = styled.div`
   background-size: cover;
 `;
 
-const Link = styled.a`
-  margin-right: 60px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 1.5rem;
-  color: #000000;
-  height: fit-content;
-  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.7), 0 2px 0 rgba(0, 0, 0, 0.7);
-  transition: box-shadow 0.3s;
-  padding-bottom: 2px;
+const BurgerRightLinksItem = styled.li`
+  position: relative;
 
-  :hover {
-    cursor: pointer;
-    box-shadow: inset 0 -30px 0 rgba(0, 0, 0, 0.3), 0 2px 0 rgba(0, 0, 0, 0.3);
+  a {
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    display: inline-block;
+    padding: 15px 20px;
+    position: relative;
+    ::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      display: block;
+      background: none repeat scroll 0 0 transparent;
+      height: 2px;
+      width: 0;
+      background: #000;
+      transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    }
+    :hover::after {
+      width: 100%;
+      left: 0;
+    }
   }
 `;
 
@@ -68,13 +84,16 @@ const BurgerButton = styled.div`
 `;
 
 const BurgerWrapper = styled.ul`
-  background: rgba(29, 29, 29, 0.42);
+  background: rgba(29, 29, 29, 0.8);
   min-height: calc(100vh - 98px);
+  min-width: 100vw;
   padding: 16px;
   margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  z-index: 1000;
   * {
     width: fit-content;
   }
@@ -84,7 +103,8 @@ const Arrow = styled.div`
   width: 20px;
   height: 20px;
   margin-left: 4px;
-  background: url(${arrowSvg});
+  background: url(${arrowPng});
+  background-size: contain;
   ${(props) =>
     props.isActive ||
     `
@@ -92,12 +112,22 @@ const Arrow = styled.div`
   `}
 `;
 
-const LinkInBergur = styled(Link)`
-  margin-bottom: 40px;
+const LinkInBergur = styled(BurgerRightLinksItem)`
+  margin-bottom: 1rem;
   margin-right: 0;
-
   display: flex;
   align-items: center;
+  list-style: none;
+  font-size: 1.5rem;
+  color: #fff;
+  a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    &::after {
+      background: #fff;
+    }
+  }
 `;
 
 const SubTitle = styled.a`
@@ -106,9 +136,12 @@ const SubTitle = styled.a`
   font-size: 16px;
   line-height: 21px;
   margin-bottom: 20px;
+  transition: color 1s;
+  color: #fff;
   :hover {
     cursor: pointer;
     color: #fff;
+    opacity: 0.5;
   }
 `;
 
@@ -117,33 +150,72 @@ const BurgerRight = styled.div`
   align-items: center;
 `;
 
-const Space = styled.div`
-  height: 110px;
+const BurgerRightLinks = styled.div`
+  display: flex;
+  margin-right: 120px;
+  list-style: none;
+  font-size: 1.2rem;
 `;
 
-export default function Header({ headerList }) {
+const Space = styled.div`
+  height: 98.36px;
+`;
+
+export default function Header() {
   let isDesktop = useIsDesktop();
   const scrollDirection = useScrollDirection();
   const [isOpenBurger, setIsOpenBurger] = useState(false);
+  const [page, setPage] = useState("");
+  const [headerList, setHeaderList] = useState([]);
+  const [signUpLink, setSignUpLink] = useState("");
+  const location = useLocation();
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/interview": {
+        setPage("interview");
+        setHeaderList(interviewWording.headerList);
+        setSignUpLink(interviewWording.signUpLink);
+        break;
+      }
+      case "/apcs": {
+        setHeaderList(apcsWording.headerList);
+        setSignUpLink(apcsWording.signUpLink);
+        setPage("apcs");
+        break;
+      }
+      default: {
+        setHeaderList(defaultWording.headerList);
+        setSignUpLink(defaultWording.signUpLink);
+        setPage("default");
+      }
+    }
+  }, [location.pathname]);
   return (
     <>
-      <Space />
+      {(page !== "apcs" || isOpenBurger) && <Space />}
+      <SignUpButton
+        isBall={scrollDirection === "down"}
+        page={page}
+        link={signUpLink}
+      />
       <Wrapper
         isOpen={isOpenBurger}
         isHide={scrollDirection === "down" && !isOpenBurger}
       >
-        <Logo />
+        <a href={"/"}>
+          <Logo />
+        </a>
         <BurgerRight>
-          {isDesktop ? (
-            <>
+          {isDesktop && (
+            <BurgerRightLinks>
               {headerList.map((item, i) => (
-                <Link href={item.href} key={`header-list-${i}`}>
-                  {item.title}
-                </Link>
+                <BurgerRightLinksItem key={`header-list-${i}`}>
+                  <a href={"/#/" + item.href}>{item.title}</a>
+                </BurgerRightLinksItem>
               ))}
-              <SignUpButton />
-            </>
-          ) : (
+            </BurgerRightLinks>
+          )}
+          {!isDesktop && page !== "default" && (
             <BurgerButton
               onClick={() => setIsOpenBurger(!isOpenBurger)}
               isOpen={isOpenBurger}
@@ -151,17 +223,24 @@ export default function Header({ headerList }) {
           )}
         </BurgerRight>
       </Wrapper>
-      {isOpenBurger && !isDesktop && (
+      {((isOpenBurger && !isDesktop) || page === "default") && (
         <BurgerWrapper>
           {headerList.map((item) => (
             <>
-              <LinkInBergur href={item.href}>
-                {item.title}
-                <Arrow isActive={item.isActive} />
+              <LinkInBergur onClick={() => setIsOpenBurger(false)}>
+                <a href={"#/" + item.href}>
+                  <div>{item.title}</div>
+                  <Arrow isActive={item.isActive} />
+                </a>
               </LinkInBergur>
               {item.content &&
                 item.content.map((subItem) => (
-                  <SubTitle>{subItem.title}</SubTitle>
+                  <SubTitle
+                    href={"/#/" + item.href + "#" + subItem.href}
+                    onClick={() => setIsOpenBurger(false)}
+                  >
+                    {subItem.title}
+                  </SubTitle>
                 ))}
             </>
           ))}

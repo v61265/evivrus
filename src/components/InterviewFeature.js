@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import FeatureItemComponent from "./FeatureItem";
+import FeatureItemComponent from "./InterviewFeatureItem";
 import Title from "./Title";
 
 const FeatureWrapper = styled.div`
@@ -20,14 +20,17 @@ const Slash = styled.div`
 
 export default function Feature({ features }) {
   return (
-    <FeatureWrapper>
+    <FeatureWrapper id='feature'>
       <Title title='課程特色' isLight={true} />
       {features.map((feature, i) => {
         if (i !== 0) {
           return (
             <div key={`feature-item-${i}`}>
-              <Slash />
-              <FeatureItemComponent feature={feature} />
+              <Slash key={`feature-slash-${i}`} />
+              <FeatureItemComponent
+                feature={feature}
+                key={`feature-item-${i}`}
+              />
             </div>
           );
         }

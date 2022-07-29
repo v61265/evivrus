@@ -6,7 +6,7 @@ const ItemWrapper = styled.div`
   display: flex;
   align-items: flex-end;
 
-  &:nth-child(2n + 1) {
+  & + & {
     align-self: end;
   }
 `;
@@ -30,11 +30,9 @@ const Avatar = styled.div`
 
 const TeacherAvatar = styled(Avatar)`
   margin: 0 0 0 24px;
-  background: #6d8bbe;
-  img {
-    width: 59.67px;
-    height: 64.06px;
-  }
+  background: ${(props) =>
+    props.location === "/interview" ? "#6d8bbe" : "#FFD8B1"};
+  position: relative;
 `;
 
 const Bubble = styled.div`
@@ -73,7 +71,8 @@ const Bubble = styled.div`
 `;
 
 const TeacherBubble = styled(Bubble)`
-  background: #6d8bbe;
+  background: ${(props) =>
+    props.location === "/interview" ? "#6d8bbe" : "#FFD8B1"};
   margin-top: 1rem;
   border-bottom-left-radius: 0.4em;
   margin-right: 0;
@@ -82,14 +81,30 @@ const TeacherBubble = styled(Bubble)`
   &:after {
     left: auto;
     right: 0;
-    border-right-color: #6d8bbe;
+    border-right-color: ${(props) =>
+      props.location === "/interview" ? "#6d8bbe" : "#FFD8B1"};
     transform: translate(50%, -50%) scaleX(-1);
   }
 `;
 
-export default function QAItem({ qa }) {
+const Container = styled.div`
+  opacity: 0;
+  transform: translate(0, 50px);
+  transition: opacity 1s, transform 1s;
+  transition-delay: ${(props) => props.index * 0.5}s;
+  display: flex;
+  flex-direction: column;
+  ${(props) =>
+    props.isShown &&
+    `
+    opacity: 1;
+    transform: translate(0);
+    `}
+`;
+
+export default function QAItem({ qa, index, isShown, location }) {
   return (
-    <>
+    <Container isShown={isShown} index={index}>
       <ItemWrapper>
         <Avatar>
           <img alt='student' src={student} />
@@ -97,11 +112,11 @@ export default function QAItem({ qa }) {
         <Bubble>{qa.question}</Bubble>
       </ItemWrapper>
       <ItemWrapper>
-        <TeacherBubble>{qa.answer}</TeacherBubble>
-        <TeacherAvatar>
+        <TeacherBubble location={location}>{qa.answer}</TeacherBubble>
+        <TeacherAvatar location={location}>
           <img alt='student' src={teacher} />
         </TeacherAvatar>
       </ItemWrapper>
-    </>
+    </Container>
   );
 }

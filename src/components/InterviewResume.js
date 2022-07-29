@@ -2,9 +2,11 @@ import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import LinkRenderer from "./LinkRenderer";
 import useIsDesktop from "../hooks/useIsDesktop.js";
+import { InView } from "react-intersection-observer";
+import { useState } from "react";
 
 const ResumeWrapper = styled.div`
-  padding: 3rem;
+  padding: 6rem 3rem;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
@@ -43,14 +45,27 @@ const ResumeItem = styled.div`
     &::before {
       content: "";
       position: absolute;
-      height: calc(100% + 6rem);
+      height: 0;
       width: 1rem;
       background: #0b3e92;
       top: 3rem;
       left: 3.125rem;
       transform: translate(-50%, 0);
       z-index: -1;
+      transition: height 2s;
+    }
   }
+  ${(props) =>
+    props.opened &&
+    `
+  &:not(:last-child) {
+    &::before {
+      height: calc(100% + 6rem);
+      transition: height 1s;
+      transition-delay: ${props.index * 1}s
+    }
+  }
+  `}
 `;
 
 const ResumeItemName = styled.div`
@@ -94,43 +109,49 @@ const ResumeItemSubtitle = styled.div`
 
 export default function Resume({ resume }) {
   const isDesktop = useIsDesktop();
+  const [isOpened, setIsOpened] = useState(false);
   return (
-    <ResumeWrapper>
+    <ResumeWrapper id='experience'>
       <ResumeTitle>
         寺尾老師
         {isDesktop && <br />}
         學經歷
       </ResumeTitle>
-      <ResumeItemWrapper>
-        {resume.map((item, i) => (
-          <ResumeItem key={`resume-item-${i}`}>
-            <ResumeItemName>{item.name}</ResumeItemName>
-            <div>
-              <ResumeItemTitle>
-                {item.title.map((title) => {
-                  return (
-                    <ReactMarkdown
-                      children={title}
-                      key={`resume-item-title-${title}`}
-                      components={{ a: LinkRenderer }}
-                    />
-                  );
-                })}
-              </ResumeItemTitle>
-              <ResumeItemSubtitle>
-                {item.subtitle &&
-                  item.subtitle.map((subtitle) => (
-                    <ReactMarkdown
-                      children={subtitle}
-                      key={`resume-item-subtitle-${subtitle}`}
-                      components={{ a: LinkRenderer }}
-                    />
-                  ))}
-              </ResumeItemSubtitle>
-            </div>
-          </ResumeItem>
-        ))}
-      </ResumeItemWrapper>
+      <InView
+        onChange={(inView, entry) => setIsOpened(inView)}
+        triggerOnce={true}
+      >
+        <ResumeItemWrapper>
+          {resume.map((item, i) => (
+            <ResumeItem key={`resume-item-${i}`} opened={isOpened} index={i}>
+              <ResumeItemName>{item.name}</ResumeItemName>
+              <div>
+                <ResumeItemTitle>
+                  {item.title.map((title) => {
+                    return (
+                      <ReactMarkdown
+                        children={title}
+                        key={`resume-item-title-${title}`}
+                        components={{ a: LinkRenderer }}
+                      />
+                    );
+                  })}
+                </ResumeItemTitle>
+                <ResumeItemSubtitle>
+                  {item.subtitle &&
+                    item.subtitle.map((subtitle) => (
+                      <ReactMarkdown
+                        children={subtitle}
+                        key={`resume-item-subtitle-${subtitle}`}
+                        components={{ a: LinkRenderer }}
+                      />
+                    ))}
+                </ResumeItemSubtitle>
+              </div>
+            </ResumeItem>
+          ))}
+        </ResumeItemWrapper>
+      </InView>
     </ResumeWrapper>
   );
 }

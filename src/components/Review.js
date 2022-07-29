@@ -18,7 +18,7 @@ const ItemWrapper = styled.div`
 export default function Review({ reviews }) {
   const review = reviews[0];
   return (
-    <ReviewWrapper>
+    <ReviewWrapper id='feedback'>
       <Title title='學員錄取心得' isLight={false} />
       <ItemWrapper>
         <ReviewItem review={review} />

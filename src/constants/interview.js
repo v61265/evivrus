@@ -1,15 +1,20 @@
 const wording = {
+  signUpLink: "",
   headerList: [
     {
       title: "面試課程",
-      href: "/interview",
+      href: "interview",
       isActive: true,
       content: [
-        { title: "寺尾老師學經歷", href: "#resume" },
-        { title: "學員錄取心得", href: "#resume" },
+        { title: "寺尾老師學經歷", href: "experience" },
+        { title: "學員錄取心得", href: "feedback" },
+        { title: "課程特色", href: "feature" },
+        { title: "課程規劃", href: "plan" },
+        { title: "進行方式", href: "step" },
+        { title: "Q&A", href: "qa" },
       ],
     },
-    { title: "國高中生APCS初學課程", href: "/apcs", isActive: false },
+    { title: "國高中生APCS初學課程", href: "apcs", isActive: false },
   ],
   landing: {
     title: ["寺尾", "程式家教"],
@@ -42,7 +47,9 @@ const wording = {
     {
       name: "K.-T. Chen",
       background: "交大電機系，台大電機所計算機組",
-      avatar: "",
+      isOfferGet: true,
+      offer: "錄取公司錄取公司錄取公司",
+      avatar: "/asstes/student-1.png",
       student: [
         "十分感謝寺尾老師的幫忙，讓我順利從台灣面試上 Amazon Canada 的軟體工程師職位（with relocation package）！",
         "我在要面試 FAANG 的一個月前，每周跟老師約一個時間模擬面試。除了熟悉面試感覺不要緊張外，老師每次都會藉由不同的角度來詢問演算法或是 Low Level Design 的問題，讓我藉由模擬面試了解自己演算法的盲區。一周一周下來，我慢慢補齊我無腦刷 Leetcode 的漏洞，讓我更能游刃有餘的面對 FAANG 的面試。",
@@ -109,6 +116,7 @@ const wording = {
   plans: [
     {
       title: ["Leetcode 解題指導", "面試導向演算法教學"],
+      titleDesktop: ["Leetcode", "解題指導", "/", "面試導向", "演算法教學"],
       content: [
         "包含 12 大常考主題，共 12 堂課，一堂課兩小時",
         "若有預算或時間上的限制，可以可以縮減總時數，只涵蓋最常考的 top N 個演算法主題。例如，預算只能購買六小時（三堂課），那就來學最常考的前三大主題",
@@ -117,6 +125,7 @@ const wording = {
     },
     {
       title: ["模擬面試"],
+      titleDesktop: ["模擬面試"],
       content: [
         "一次一小時，包含 45 分鐘的英文演算法解題模擬面試，15 分鐘的中文檢討",
       ],
