@@ -1,18 +1,33 @@
 {
   "files": {
-    "main.css": "/evivrus/static/css/main.bab38101.css",
-    "main.js": "/evivrus/static/js/main.4cd7166b.js",
-    "static/media/interview-bg-desktop.svg": "/evivrus/static/media/interview-bg-desktop.977af54fa45ed1da8af7378e094eeb63.svg",
-    "static/media/logo.svg": "/evivrus/static/media/logo.90932ef566952888c75be0bca9430d3f.svg",
-    "static/media/open-burger.svg": "/evivrus/static/media/open-burger.f182a2cb96dc8a3024078143ffaf1f04.svg",
-    "static/media/arrow.svg": "/evivrus/static/media/arrow.8009b1ee5caffee506ef8d15a68e1fc9.svg",
-    "static/media/close-burger.svg": "/evivrus/static/media/close-burger.371981c119478210d97624b768936759.svg",
-    "index.html": "/evivrus/index.html",
-    "main.bab38101.css.map": "/evivrus/static/css/main.bab38101.css.map",
-    "main.4cd7166b.js.map": "/evivrus/static/js/main.4cd7166b.js.map"
+    "main.css": "./static/css/main.22df9dcc.css",
+    "main.js": "./static/js/main.9bc43f58.js",
+    "static/media/interview-bg-desktop.jpeg": "./static/media/interview-bg-desktop.772117dddd6f98f6977b.jpeg",
+    "static/media/interview-bg-mobile.svg": "./static/media/interview-bg-mobile.6c3b201fc6f2f44f9891cdc172831d5e.svg",
+    "static/media/apcs-resume.png": "./static/media/apcs-resume.cb79fa23da1e37c2e9c9.png",
+    "static/media/apcs-cover.png": "./static/media/apcs-cover.9f9f1a52f5aec46ac574.png",
+    "static/media/apcs-background.png": "./static/media/apcs-background.fa8410a2de6e88fb2b64.png",
+    "static/media/logo-white.png": "./static/media/logo-white.b69b79e881695bea7e80.png",
+    "static/media/donut.png": "./static/media/donut.2450c7312d46e715914d.png",
+    "static/media/mail.svg": "./static/media/mail.c3a4fa3b5c204bbd7fe3204b909f7aa6.svg",
+    "static/media/fb.svg": "./static/media/fb.4a1ac0b884ab6a16430249bc4fb6c3b8.svg",
+    "static/media/teacher-avatar.png": "./static/media/teacher-avatar.03ed3cf9c6815df6fc98.png",
+    "static/media/apcs-cover-mobile-2.png": "./static/media/apcs-cover-mobile-2.c583169dd6768e9fa022.png",
+    "static/media/apcs-background-mobile.png": "./static/media/apcs-background-mobile.c2a40ccc42d48c6eb780.png",
+    "static/media/apcs-cover-mobile.png": "./static/media/apcs-cover-mobile.8080ea91711e6dc41a9a.png",
+    "static/media/logo.svg": "./static/media/logo.90932ef566952888c75be0bca9430d3f.svg",
+    "static/media/offer-get.png": "./static/media/offer-get.ffccc61b3e7c555abcbf.png",
+    "static/media/online.png": "./static/media/online.c1c0c67d51031e15729e.png",
+    "static/media/open-burger.svg": "./static/media/open-burger.f182a2cb96dc8a3024078143ffaf1f04.svg",
+    "static/media/close-burger.svg": "./static/media/close-burger.04a3555ef54d40a6b11721e7b2669b85.svg",
+    "index.html": "./index.html",
+    "static/media/star-red.svg": "./static/media/star-red.3630cb8fdabe38fc1c49e54f32b6e706.svg",
+    "static/media/star-yellow.svg": "./static/media/star-yellow.21631cbf8d5101b9a6d2387b3c840157.svg",
+    "main.22df9dcc.css.map": "./static/css/main.22df9dcc.css.map",
+    "main.9bc43f58.js.map": "./static/js/main.9bc43f58.js.map"
   },
   "entrypoints": [
-    "static/css/main.bab38101.css",
-    "static/js/main.4cd7166b.js"
+    "static/css/main.22df9dcc.css",
+    "static/js/main.9bc43f58.js"
   ]
 }
