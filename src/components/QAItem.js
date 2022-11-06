@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import student from "../asstes/student-avatar.png";
-import teacher from "../asstes/teacher-avatar.png";
+import styled from 'styled-components';
+import student from '../asstes/student-avatar.png';
+import teacher from '../asstes/teacher-avatar.png';
 
 const ItemWrapper = styled.div`
   display: flex;
@@ -13,7 +13,9 @@ const ItemWrapper = styled.div`
 
 const Avatar = styled.div`
   min-width: 36px;
-  height: 36px;
+  max-width: 36px;
+  min-height: 36px;
+  max-height: 36px;
   background: #d9d9d9;
   border-radius: 50%;
   margin-right: 24px;
@@ -24,14 +26,15 @@ const Avatar = styled.div`
 
   ${({ theme }) => theme.media.md} {
     min-width: 80px;
-    height: 80px;
+    min-height: 80px;
+    max-height: 80px;
   }
 `;
 
 const TeacherAvatar = styled(Avatar)`
   margin: 0 0 0 24px;
   background: ${(props) =>
-    props.location === "/interview" ? "#6d8bbe" : "#FFD8B1"};
+    props.location === '/interview' ? '#6d8bbe' : '#FFD8B1'};
   position: relative;
 `;
 
@@ -48,7 +51,7 @@ const Bubble = styled.div`
   margin-right: 60px;
   max-width: 600px;
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     left: 2px;
     top: 100%;
@@ -72,7 +75,7 @@ const Bubble = styled.div`
 
 const TeacherBubble = styled(Bubble)`
   background: ${(props) =>
-    props.location === "/interview" ? "#6d8bbe" : "#FFD8B1"};
+    props.location === '/interview' ? '#6d8bbe' : '#FFD8B1'};
   margin-top: 1rem;
   border-bottom-left-radius: 0.4em;
   margin-right: 0;
@@ -82,7 +85,7 @@ const TeacherBubble = styled(Bubble)`
     left: auto;
     right: 0;
     border-right-color: ${(props) =>
-      props.location === "/interview" ? "#6d8bbe" : "#FFD8B1"};
+      props.location === '/interview' ? '#6d8bbe' : '#FFD8B1'};
     transform: translate(50%, -50%) scaleX(-1);
   }
 `;

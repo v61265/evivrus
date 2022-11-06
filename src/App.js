@@ -1,7 +1,7 @@
-import InterviewPage from "./page/InterviewPage";
-import DefaultPage from "./page/DefaultPage";
-import ApcsPage from "./page/ApcsPage";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import InterviewPage from './page/InterviewPage';
+import DefaultPage from './page/DefaultPage';
+import ApcsPage from './page/ApcsPage';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (

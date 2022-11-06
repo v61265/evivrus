@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   text-align: center;
   border-radius: 50px;
   margin-top: 1rem;
-  overflow: hidden;
+  // overflow: hidden;
   ${(props) => `border: 8px solid ${props.color};`}
   ${({ theme }) => theme.media.md} {
     display: flex;
@@ -19,8 +19,8 @@ const Wrapper = styled.div`
 
 const TitleWrapper = styled.div`
   border-radius: 30px;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
   padding: 50px 2rem;
   font-weight: 600;
   color: #000000;
@@ -28,15 +28,26 @@ const TitleWrapper = styled.div`
   transform: translate(-4px, -4px);
   width: 102%;
   ${(props) => `background: ${props.color};`};
-  ${(props) => `border: 8px solid ${props.color};`}
+  // ${(props) => `border: 8px solid ${props.color};`}
   ${({ theme }) => theme.media.md} {
     min-width: 260px;
     max-width: 260px;
-    height: 100%;
     border-radius: 50px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    transform: translate(0, 0);
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    transform: translate(-4px, 0);
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: 0;
+      width: 230px;
+      height: calc(100% + 8px);
+      background: ${(props) => props.color};
+      border-radius: 40px;
+      z-index: -1;
+    }
   }
 `;
 

@@ -6,6 +6,7 @@ import coverMobile2 from "../asstes/apcs-cover-mobile-2.png";
 const Landing = styled.div`
   width: 100%;
   padding: 0 3rem;
+  min-height: 100vh;
   ${({ theme }) => theme.media.md} {
     display: flex;
     align-items: flex-end;

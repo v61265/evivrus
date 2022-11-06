@@ -12,7 +12,7 @@ import ApcsIntro from "../components/ApcsIntro.js";
 import ApcsResume from "../components/ApcsResume.js";
 import bg from "../asstes/apcs-background.png";
 import bgMobile from "../asstes/apcs-background-mobile.png";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Wrapper = styled.div`
   max-width: 100vw;
@@ -29,14 +29,42 @@ const Wrapper = styled.div`
 
 export default function DefaultPage() {
   const location = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const introRef = useRef();
+  const planRef = useRef();
+  const featureRef = useRef();
+  const stepRef = useRef();
+  const resumeRef = useRef();
+  const qaRef = useRef();
   useEffect(() => {
     const hash = location?.hash;
-    if (hash) {
-      const element = document.getElementById(hash.replace("#", ""));
-      element?.scrollIntoView({ behavior: "smooth" });
+    switch (hash.replace("#", "")) {
+      case "introduction": {
+        introRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      }
+      case "plan": {
+        planRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      }
+      case "feature": {
+        featureRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      }
+      case "step": {
+        stepRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      }
+      case "experience": {
+        resumeRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      }
+      case "qa": {
+        qaRef.current.scrollIntoView({ behavior: "smooth" });
+        break;
+      }
+      default: {
+        window.scrollTo(0, 0);
+      }
     }
   }, [location]);
   return (
@@ -44,16 +72,28 @@ export default function DefaultPage() {
       <Header />
       <Wrapper>
         <ApcsLanding />
-        <ApcsIntro intro={wording.intro} />
-        <ApcsPlan
-          plans={wording.plans}
-          hint={wording.planHint}
-          charging={wording.charging}
-        />
-        <ApcsFeature features={wording.features} />
-        <ApcsStep steps={wording.steps} />
-        <ApcsResume resume={wording.resume} />
-        <Qa qaList={wording.qaList} location={location.pathname} />
+        <div ref={introRef}>
+          <ApcsIntro intro={wording.intro} />
+        </div>
+        <div ref={planRef}>
+          <ApcsPlan
+            plans={wording.plans}
+            hint={wording.planHint}
+            charging={wording.charging}
+          />
+        </div>
+        <div ref={featureRef}>
+          <ApcsFeature features={wording.features} />
+        </div>
+        <div ref={stepRef}>
+          <ApcsStep steps={wording.steps} />
+        </div>
+        <div ref={resumeRef}>
+          <ApcsResume resume={wording.resume} />
+        </div>
+        <div ref={qaRef}>
+          <Qa qaList={wording.qaList} location={location.pathname} />
+        </div>
       </Wrapper>
       <Footer />
     </>

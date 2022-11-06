@@ -225,7 +225,7 @@ export default function Header() {
       </Wrapper>
       {((isOpenBurger && !isDesktop) || page === "default") && (
         <BurgerWrapper>
-          {headerList.map((item) => (
+          {headerList.map((item, i) => (
             <>
               <LinkInBergur onClick={() => setIsOpenBurger(false)}>
                 <a href={"#/" + item.href}>
@@ -234,8 +234,9 @@ export default function Header() {
                 </a>
               </LinkInBergur>
               {item.content &&
-                item.content.map((subItem) => (
+                item.content.map((subItem, i) => (
                   <SubTitle
+                    key={`subtitle-${i}`}
                     href={"/#/" + item.href + "#" + subItem.href}
                     onClick={() => setIsOpenBurger(false)}
                   >

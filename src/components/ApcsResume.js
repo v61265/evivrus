@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   position: relative;
   max-width: 1400px;
   margin: 0 auto;
+  min-height: 100vh;
 `;
 
 const Bubble = styled.div`
